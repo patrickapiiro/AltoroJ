@@ -14,24 +14,24 @@ on:
     branches: [ AltoroJ-3.2 ]
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: Set up JDK 11
-      uses: actions/setup-java@v2
-      with:
-        java-version: '11'
-        distribution: 'temurin'
-    - name: Build with Gradle
-      uses: gradle/gradle-build-action@4137be6a8bf7d7133955359dbd952c0ca73b1021
-      with:
-        arguments: build
-    - name: Upload artifact
-      uses: actions/upload-artifact@v2
-      with:
-        name: altoromutual
-        path: '**/**.war'
+  # build:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #   - uses: actions/checkout@v2
+  #   - name: Set up JDK 11
+  #     uses: actions/setup-java@v2
+  #     with:
+  #       java-version: '11'
+  #       distribution: 'temurin'
+  #   - name: Build with Gradle
+  #     uses: gradle/gradle-build-action@4137be6a8bf7d7133955359dbd952c0ca73b1021
+  #     with:
+  #       arguments: build
+  #   - name: Upload artifact
+  #     uses: actions/upload-artifact@v2
+  #     with:
+  #       name: altoromutual
+  #       path: '**/**.war'
   
   apiiro:
     needs: build
@@ -39,8 +39,8 @@ jobs:
     steps:
     - run: echo "curl -vv --request POST "$APIIRO_URL"/api/external/ReleaseLifeCycle/build?sourceCommit="$GITHUB_SHA"&versionString=$VERSION_STRING&productName="$PRODUCT_NAME"&buildId="$BUILD_ID"&buildPageUrl="$BUILD_PAGE_URL"&repositoryKey="$REPOSITORY_KEY" -d Content-Length":" 0 --header Authorization":" "$APIIRO_TOKEN""
       env:
-        COMMIT_SHA: "$GITHUB_SHA"
-        BUILD_ID: "$GITHUB_RUN_ID"
+        COMMIT_SHA: GITHUB_SHA
+        BUILD_ID: GITHUB_RUN_ID
         VERSION_STRING: optional_version
         BUILD_PAGE_URL: '"$GITHUB_SERVER_URL"/"$GITHUB_REPOSITORY"/actions/runs/"$GITHUB_RUN_ID"'
         PRODUCT_NAME: AltoroJ
