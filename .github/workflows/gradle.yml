@@ -34,7 +34,7 @@ jobs:
   #       path: '**/**.war'
   
   apiiro:
-    needs: build
+    #needs: build
     runs-on: ubuntu-latest
     steps:
     - run: echo "curl -vv --request POST "$APIIRO_URL"/api/external/ReleaseLifeCycle/build?sourceCommit="$GITHUB_SHA"&versionString=$VERSION_STRING&productName="$PRODUCT_NAME"&buildId="$BUILD_ID"&buildPageUrl="$BUILD_PAGE_URL"&repositoryKey="$REPOSITORY_KEY" -d Content-Length":" 0 --header Authorization":" "$APIIRO_TOKEN""
