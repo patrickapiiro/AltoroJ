@@ -37,12 +37,12 @@ jobs:
     #needs: build
     runs-on: ubuntu-latest
     steps:
-    - run: echo "curl -vv --request POST "$APIIRO_URL"/api/external/ReleaseLifeCycle/build?sourceCommit="$GITHUB_SHA"&versionString=$VERSION_STRING&productName="$PRODUCT_NAME"&buildId="$BUILD_ID"&buildPageUrl="$BUILD_PAGE_URL"&repositoryKey="$REPOSITORY_KEY" -d Content-Length":" 0 --header Authorization":" "$APIIRO_TOKEN""
+    - run: echo "curl -vv --request POST "$APIIRO_URL"/api/external/ReleaseLifeCycle/build?sourceCommit="$COMMIT_SHA"&versionString=$VERSION_STRING&productName="$PRODUCT_NAME"&buildId="$BUILD_ID"&buildPageUrl="$BUILD_PAGE_URL"&repositoryKey="$REPOSITORY_KEY" -d Content-Length":" 0 --header Authorization":" "$APIIRO_TOKEN""
       env:
         COMMIT_SHA: ${{ github.sha }}
         BUILD_ID: ${{ github.run_id }}
         VERSION_STRING: optional_version
-        BUILD_PAGE_URL: '"$GITHUB_SERVER_URL"/"$GITHUB_REPOSITORY"/actions/runs/"$GITHUB_RUN_ID"'
+        BUILD_PAGE_URL: '${{ github.server_url }}/${{ github.repository	 }}/actions/runs/${{ github.run_id }}'
         PRODUCT_NAME: AltoroJ
         APIIRO_TOKEN: APIIRO_TOKEN
         APIIRO_URL: https://app.apiiro.com
