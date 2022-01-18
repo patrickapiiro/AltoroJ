@@ -44,6 +44,6 @@ jobs:
         VERSION_STRING: optional_version
         BUILD_PAGE_URL: '${{ github.server_url }}/${{ github.repository	 }}/actions/runs/${{ github.run_id }}'
         PRODUCT_NAME: AltoroJ
-        APIIRO_TOKEN: ${{ secret.APIIRO_TOKEN }}
+        APIIRO_TOKEN: ${{ secrets.APIIRO_TOKEN }}
         APIIRO_URL: https://app.apiiro.com
         REPOSITORY_KEY: https___github_com_patrickapiiro__AltoroJ__AltoroJ
