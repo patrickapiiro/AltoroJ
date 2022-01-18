@@ -15,9 +15,7 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v2
     - name: Set up JDK 11
@@ -34,3 +32,18 @@ jobs:
       with:
         name: altoromutual
         path: '**/**.war'
+  
+  apiiro:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+    - run: echo "curl -vv --request POST "$APIIRO_URL/api/external/ReleaseLifeCycle/build?sourceCommit=$COMMIT_SHA&versionString=$VERSION_STRING&productName=LIM&buildId=$BUILD_ID&buildPageUrl=$BUILD_PAGE_URL&repositoryKey=$REPOSITORY_KEY" -d "Content-Length":" 0" --header "Authorization":" $APIIRO_TOKEN"
+      env:
+        COMMIT_SHA: $GITHUB_SHA
+        BUILD_ID: $GITHUB_RUN_ID
+        VERSION_STRING: $
+        BUILD_PAGE_URL: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID
+        PRODUCT_NAME: PRODUCT_NAME
+        APIIRO_TOKEN: APIIRO_TOKEN
+        APIIRO_URL: https://app.apiiro.com
+        REPOSITORY_KEY: https___github_com_patrickapiiro__AltoroJ__AltoroJ
