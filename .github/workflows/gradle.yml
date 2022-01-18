@@ -41,8 +41,8 @@ jobs:
       env:
         COMMIT_SHA: "$GITHUB_SHA"
         BUILD_ID: "$GITHUB_RUN_ID"
-        VERSION_STRING: 
-        BUILD_PAGE_URL: "$GITHUB_SERVER_URL"/"$GITHUB_REPOSITORY"/actions/runs/"$GITHUB_RUN_ID"
+        VERSION_STRING: optional_version
+        BUILD_PAGE_URL: '"$GITHUB_SERVER_URL"/"$GITHUB_REPOSITORY"/actions/runs/"$GITHUB_RUN_ID"'
         PRODUCT_NAME: AltoroJ
         APIIRO_TOKEN: APIIRO_TOKEN
         APIIRO_URL: https://app.apiiro.com
