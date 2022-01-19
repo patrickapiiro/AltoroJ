@@ -14,24 +14,24 @@ on:
     branches: [ AltoroJ-3.2 ]
 
 jobs:
-  # build:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #   - uses: actions/checkout@v2
-  #   - name: Set up JDK 11
-  #     uses: actions/setup-java@v2
-  #     with:
-  #       java-version: '11'
-  #       distribution: 'temurin'
-  #   - name: Build with Gradle
-  #     uses: gradle/gradle-build-action@4137be6a8bf7d7133955359dbd952c0ca73b1021
-  #     with:
-  #       arguments: build
-  #   - name: Upload artifact
-  #     uses: actions/upload-artifact@v2
-  #     with:
-  #       name: altoromutual
-  #       path: '**/**.war'
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up JDK 11
+      uses: actions/setup-java@v2
+      with:
+        java-version: '11'
+        distribution: 'temurin'
+    - name: Build with Gradle
+      uses: gradle/gradle-build-action@4137be6a8bf7d7133955359dbd952c0ca73b1021
+      with:
+        arguments: build
+    - name: Upload artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: altoromutual
+        path: '**/**.war'
   
   apiiro:
     #needs: build
@@ -49,8 +49,3 @@ jobs:
         APIIRO_TOKEN: ${{ secrets.APIIRO_TOKEN }}
         APIIRO_URL: https://app.apiiro.com
         REPOSITORY_KEY: https___github_com_patrickapiiro__AltoroJ__AltoroJ
-
-    # - run: |
-    #       curl -vvv -X POST "https://app.apiiro.com/api/external/ReleaseLifeCycle/build?sourceCommit=${{ github.sha }}&versionString=123&productName=$PRODUCT_NAME&buildId=${{ github.run_id }}&buildPageUrl=$BUILD_PAGE_URL&repositoryKey=$REPOSITORY_KEY" \
-    #       curl -vvv -X POST "$APIIRO_URL/api/external/ReleaseLifeCycle/build?sourceCommit=$COMMIT_SHA&versionString=$VERSION_STRING&productName=$PRODUCT_NAME&buildId=$BUILD_ID&buildPageUrl=$BUILD_PAGE_URL&repositoryKey=$REPOSITORY_KEY" \
-    #       -H "Authorization: $APIIRO_TOKEN"
