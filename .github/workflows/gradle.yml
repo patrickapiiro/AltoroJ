@@ -38,7 +38,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - run: |
-          echo  "curl -vvv -H Content-Length= 0 -H Authorization: "$APIIRO_TOKEN" --request POST "$APIIRO_URL/api/external/ReleaseLifeCycle/build?sourceCommit=$COMMIT_SHA"&"versionString=$VERSION_STRING"&"productName=$PRODUCT_NAME"&"buildId=$BUILD_ID"&"buildPageUrl=$BUILD_PAGE_URL"&"repositoryKey=$REPOSITORY_KEY""
+          curl -vvv -H Content-Length= 0 -H Authorization: "$APIIRO_TOKEN" --request POST "$APIIRO_URL/api/external/ReleaseLifeCycle/build?sourceCommit=$COMMIT_SHA"&"versionString=$VERSION_STRING"&"productName=$PRODUCT_NAME"&"buildId=$BUILD_ID"&"buildPageUrl=$BUILD_PAGE_URL"&"repositoryKey=$REPOSITORY_KEY"
       env:
         COMMIT_SHA: ${{ github.sha }}
         BUILD_ID: ${{ github.run_id }}
