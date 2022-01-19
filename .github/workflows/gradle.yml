@@ -38,7 +38,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - run: |
-          curl -vvv -X POST "https://app.apiiro.com/api/external/ReleaseLifeCycle/build?sourceCommit=${{ github.sha }}&versionString=123&productName=$PRODUCT_NAME&buildId=${{ github.run_id }}&buildPageUrl=$BUILD_PAGE_URL&repositoryKey=$REPOSITORY_KEY" \
+          curl -vvv -X POST "$APIIRO_URL/api/external/ReleaseLifeCycle/build?sourceCommit=$COMMIT_SHA&versionString=$VERSION_STRING&productName=$PRODUCT_NAME&buildId=$BUILD_ID&buildPageUrl=$BUILD_PAGE_URL&repositoryKey=$REPOSITORY_KEY" \
           -H "Authorization: ${{ secrets.APIIRO_TOKEN }}"
       env:
         COMMIT_SHA: ${{ github.sha }}
@@ -51,5 +51,6 @@ jobs:
         REPOSITORY_KEY: https___github_com_patrickapiiro__AltoroJ__AltoroJ
 
     # - run: |
+    #       curl -vvv -X POST "https://app.apiiro.com/api/external/ReleaseLifeCycle/build?sourceCommit=${{ github.sha }}&versionString=123&productName=$PRODUCT_NAME&buildId=${{ github.run_id }}&buildPageUrl=$BUILD_PAGE_URL&repositoryKey=$REPOSITORY_KEY" \
     #       curl -vvv -X POST "$APIIRO_URL/api/external/ReleaseLifeCycle/build?sourceCommit=$COMMIT_SHA&versionString=$VERSION_STRING&productName=$PRODUCT_NAME&buildId=$BUILD_ID&buildPageUrl=$BUILD_PAGE_URL&repositoryKey=$REPOSITORY_KEY" \
-    #       -H Content-Length= 0 -H Authorization: "$APIIRO_TOKEN"
+    #       -H "Authorization: $APIIRO_TOKEN"
