@@ -34,7 +34,7 @@ jobs:
         path: '**/**.war'
   
   apiiro:
-    #needs: build
+    needs: build
     runs-on: ubuntu-latest
     steps:
     - run: |
