@@ -144,10 +144,10 @@ public class AccountAPI extends AltoroAPI {
 	public Response getTransactions(@PathParam("accountNo") String accountNo,
 			String bodyJSON, @Context HttpServletRequest request) throws SQLException {
 
-		if (!this.loggedIn(request)) {
+		/*if (!this.loggedIn(request)) {
 			return Response.status(401).entity("{\"loggedIn\" : \"false\"}")
 					.build();
-		}
+		}*/
 		User user = OperationsUtil.getUser(request);
 		String startString;
 		String endString;
