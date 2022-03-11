@@ -34,11 +34,11 @@ jobs:
         path: '**/**.war'
   
   apiiro:
-    needs: build
+    #needs: build
     runs-on: ubuntu-latest
     steps:
     - run: |
-          curl -X POST "$APIIRO_URL/v1/cicd/builds" \
+          curl -vvv -X POST "$APIIRO_URL/v1/cicd/builds" \
           -H "Authorization: Bearer ${{ secrets.APIIRO_TOKEN }}" \
           -H 'Content-Type: application/json' \
           --data '{ 
