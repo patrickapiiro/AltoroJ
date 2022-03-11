@@ -45,15 +45,14 @@ jobs:
                     "buildId": "$BUILD_ID",
                     "sourceCommit": "$COMMIT_SHA",
                     "repositoryKey": "$REPOSITORY_KEY",
-                    "applicationName": "$PRODUCT_NAME",
+                    "applicationName": "$APPLICATION_NAME",
                     "buildPageUrl": "$BUILD_PAGE_URL" 
                   }'
       env:
         COMMIT_SHA: ${{ github.sha }}
         BUILD_ID: ${{ github.run_id }}
-        VERSION_STRING: 123
         BUILD_PAGE_URL: '${{ github.server_url }}/${{ github.repository	 }}/actions/runs/${{ github.run_id }}'
-        PRODUCT_NAME: AltoroJ
+        APPLICATION_NAME: AltoroJ
         APIIRO_TOKEN: ${{ secrets.APIIRO_TOKEN }}
-        APIIRO_URL: https://app.apiiro.com
+        APIIRO_URL: https://app.apiiro.com/rest-api/
         REPOSITORY_KEY: https___github_com_patrickapiiro__AltoroJ__AltoroJ
