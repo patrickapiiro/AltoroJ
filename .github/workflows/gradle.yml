@@ -38,8 +38,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - run: |
-          curl -vvv -X POST "$APIIRO_URL/v1/cicd/builds" \
-          -H "Authorization: ${{ secrets.APIIRO_TOKEN }}" \
+          curl -X POST "$APIIRO_URL/v1/cicd/builds" \
+          -H "Authorization: Bearer ${{ secrets.APIIRO_TOKEN }}" \
           -H 'Content-Type: application/json' \
           --data '{ 
                     "buildId": "$BUILD_ID",
