@@ -54,5 +54,5 @@ jobs:
         BUILD_PAGE_URL: '${{ github.server_url }}/${{ github.repository	 }}/actions/runs/${{ github.run_id }}'
         APPLICATION_NAME: AltoroJ
         APIIRO_TOKEN: ${{ secrets.APIIRO_TOKEN }}
-        APIIRO_URL: https://app.apiiro.com/rest-api/
+        APIIRO_URL: https://app.apiiro.com/rest-api
         REPOSITORY_KEY: https___github_com_patrickapiiro__AltoroJ__AltoroJ
