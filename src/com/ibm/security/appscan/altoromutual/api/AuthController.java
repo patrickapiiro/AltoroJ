@@ -1,4 +1,4 @@
-package com.example.springboot;
+package com.ibm.security.appscan.altoromutual.api;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
