@@ -41,8 +41,7 @@ jobs:
           curl -vvv -X POST "$APIIRO_URL" \
           -H "Authorization: ${{ secrets.APIIRO_TOKEN }}" \
           -H 'Content-Type: application/json' \
-          --data '{ "buildId": "${{ github.run_id }}","sourceCommit": "${{ github.sha }}","repositoryKey": "$REPOSITORY_KEY","applicationName": "$APPLICATION_NAME","buildPageUrl": "'${{ github.server_url }}/${{ github.repository	 }}/actions/runs/${{ github.run_id }}'" }'  
-        # --data '{ "buildId": "${{ github.run_id }}","sourceCommit": "${{ github.sha }}","repositoryKey": "$REPOSITORY_KEY","applicationName": "$APPLICATION_NAME","buildPageUrl": "$BUILD_PAGE_URL" }'
+          --data '{ "buildId": "${{ github.run_id }}","sourceCommit": "${{ github.sha }}","repositoryKey": "$REPOSITORY_KEY","applicationName": "$APPLICATION_NAME","buildPageUrl": "$BUILD_PAGE_URL" }'
       env:
         BUILD_PAGE_URL: '${{ github.server_url }}/${{ github.repository	 }}/actions/runs/${{ github.run_id }}'
         APPLICATION_NAME: AltoroJ
