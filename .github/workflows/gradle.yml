@@ -38,7 +38,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - run: |
-          curl -vvv -X POST "$APIIRO_URL" \
+          curl -X POST "$APIIRO_URL" \
           -H "Authorization: ${{ secrets.APIIRO_TOKEN }}" \
           -H 'Content-Type: application/json' \
           --data '{ "buildId": "${{ github.run_id }}","sourceCommit": "${{ github.sha }}","repositoryKey": "$REPOSITORY_KEY","applicationName": "$APPLICATION_NAME","buildPageUrl": "$BUILD_PAGE_URL" }'
